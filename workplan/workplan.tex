@@ -1,0 +1,189 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+%usepackage{graphicx} % Required for including pictures
+\usepackage{hyperref} % Required for including pictures
+%usepackage{wrapfig} % Allows in-line images
+\usepackage[utf8x]{inputenc}
+\usepackage{a4}
+
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{center} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{50pt} % Some vertical space between the title and author name
+
+{\large\@author} % Author name
+
+\vspace{40pt} % Some vertical space between the author block and abstract
+\end{center}
+}
+
+\newcommand\Vtextvisiblespace[1][.3em]{%
+  \mbox{\kern.06em\vrule height.3ex}%
+  \vbox{\hrule width#1}%
+  \hbox{\vrule height.3ex}}
+
+\def\bibliometrics#1{\relax}
+
+%----------------------------------------------------------------------------------------
+%   TITLE
+%----------------------------------------------------------------------------------------
+
+\def\msccandidate{Diogo João Silva de Araújo}
+\def\mscsupervisor{José Nuno Oliveira \footnote{HASLab/ U.Minho \& INESC TEC.}}
+\def\msctitle    {Formally Understanding Blockchain by Reverse Engineering}
+
+\title{\textbf{MSc project proposal}\\ \vspace{0.5cm}\msctitle}
+\author{
+	  Candidate:  \textsc{\msccandidate}
+	\\Supervisor: \textsc{\mscsupervisor}
+	\\
+	\vspace{0.5cm}
+    \normalsize{Master in Computer Engineering (MEI)\\ University of Minho, Braga, Portugal}
+    \\ 2022/23
+    } % Author
+
+\date{\today} 
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+%----------------------------------------------------------------------------------------
+%   ABSTRACT AND KEYWORDS
+%----------------------------------------------------------------------------------------
+
+%\renewcommand{\abstractname}{Summary} % Uncomment to change the name of the abstract to something else
+
+%\begin{abstract} \end{abstract}
+
+%vspace{2em} % Some vertical space between the abstract and first section
+
+%---------------------------------------------------------------------------------------- % ESSAY BODY
+%----------------------------------------------------------------------------------------
+
+\section*{Motivation}
+
+Blockchains are decentralized transactional ledgers that rely on cryptographic hash functions for guaranteeing the integrity of the stored data. Participants on the network reach agreement on what valid transactions are through consensus algorithms.
+
+Blockchains may also provide support for Smart Contracts. Smart Contracts are scripts of an ad-hoc programming language that are stored in the blockchain and that run on the network. They can interact with the ledger’s data and update its state. These scripts can express the logic of possibly complex contracts between users of the blockchain. Thus, Smart Contracts can facilitate the economic activity of blockchain participants.
+
+With the emergence and increasing popularity of cryptocurrencies such as Bitcoin and Ethereum, it is now of utmost importance to have strong guarantees of the behaviour of blockchain so ware. These guarantees can be brought by using Formal Methods. Indeed, Blockchain software encompasses many topics of computer science where using Formal Methods techniques and tools is relevant: consensus algorithms to ensure the liveness and the security of the data on the chain, programming languages specifically designed to write smart contracts, cryptographic protocols, such as zero-knowledge proofs, used to ensure privacy, etc.
+
+xxxxx
+
+Meanwhile, the same principle was explored in a more accessible way that
+does not require such technical knowledge \cite{SO08}. However, such experiments
+did not go beyond the exploratory phase.
+
+\section*{Goals}
+
+The first workshop on formal methods for blockchain took place in October 2019, as part of the 3rd World Congress in Formal Methods (FM'19). This inaugurated a series of events which aim at ensuring safety and quality in blockchain technologies by use of formal methods.
+
+Blockchains are decentralized transactional ledgers that rely on cryptographic hash functions for guaranteeing the integrity of the stored data. Participants on the network reach agreement on what valid transactions are through consensus algorithms.
+
+Blockchains may also provide support for Smart Contracts. Smart Contracts are scripts of an ad-hoc programming language that are stored in the blockchain and that run on the network. They can interact with the ledger’s data and update its state. These scripts can express the logic of possibly complex contracts between users of the blockchain. Thus, Smart Contracts can facilitate the economic activity of blockchain participants.
+
+With the emergence and increasing popularity of cryptocurrencies such as Bitcoin and Ethereum, it is now of utmost importance to have strong guarantees of the behaviour of blockchain so ware. These guarantees can be brought by using Formal Methods. Indeed, Blockchain software encompasses many topics of computer science where using Formal Methods techniques and tools is relevant: consensus algorithms to ensure the liveness and the security of the data on the chain, programming languages specifically designed to write smart contracts, cryptographic protocols, such as zero-knowledge proofs, used to ensure privacy, etc.
+
+The main aim of this dissertation is to start from ........
+
+
+
+This work can be framed in the broad discipline of formal methods applied to
+software design, stepping up the paradigm of deriving correct-by-construction
+programs from logic specifications.
+
+%------------------------------------------------
+
+\section*{Research plan}
+
+The theoretical background of the proposed work requires familiarity with
+\cite{BM97,Ba04a,Ol20}, whose study in depth is part of
+the overall research plan, structured in four main steps:
+
+\begin{description}
+
+\item[Background and state of the art] -- The first months will be devoted
+to the study of the state of the art and technical background related to
+the project, including previous work in the same application domain \cite{SO08}.
+
+\item[Writing the PDR report] -- The outcome of the previous step will be
+embodied in the pre-dissertation report (PDR) that will delimit and characterise
+the problem to be addressed in the future master’s dissertation.
+
+\item[Contribution] -- Main body of research evolving towards the main aim of the
+project: the design of a software development strategy from specifications 
+that follow the GC pattern, leading to correct-by-construction
+artifacts, with possible automation using the Galculator tool --- which will need to
+be refactored from its legacy state \cite{SO08}.
+
+\item[Writing up] - Incorporating all final results and suggestions for future
+work in the master's dissertation.
+\end{description}
+
+%------------------------------------------------
+
+\section*{Deliverables}
+
+This project is expected to deliver, besides the PDR report and the dissertation itself:
+\begin{itemize}
+\item   an InfoBlender talk;
+\item   a conference paper.
+\end{itemize}
+
+\section*{Planned schedule}
+
+\bigskip{\small\def\X{{\large $\bullet$}}
+\begin{center}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | }
+  \hline
+  \bf Task & \bf  Oct & \bf  Nov & \bf  Dez & \bf  Jan & \bf  Fev & \bf  Mar & \bf  Apr & \bf  May & \bf  Jun & \bf  Jul \\
+  \hline
+  Background and SOA & \X & \X & \X & & & & & & & \\
+  \hline
+  PDR preparation & & \X & \X & \X & & & & & & \\
+  \hline
+  Contribution & & & & \X & \X & \X & \X & \X & \X & \\
+  \hline
+  Writing up & & & & & & & \X & \X & \X & \X \\
+  \hline
+\end{tabular}
+\end{center}
+}%small
+%----------------------------------------------------------------------------------------
+%   BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+
+\bibliographystyle{unsrt}
+
+\bibliography{workplan}
+
+%end{document}
+
+\begin{flushleft}
+\vspace{1cm}
+Date: \today \\
+\vspace{4cm}
+Student: \Vtextvisiblespace[9cm] \\
+%\vspace{4cm}
+%Co-Supervisor: \Vtextvisiblespace[8.4cm] \\
+\vspace{4cm}
+Supervisor: \Vtextvisiblespace[9.52cm]
+\end{flushleft}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
