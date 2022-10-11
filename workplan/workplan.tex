@@ -75,17 +75,11 @@
 
 \section*{Motivation}
 
-Blockchains are decentralized transactional ledgers that rely on cryptographic hash functions for guaranteeing the integrity of the stored data. Participants on the network reach agreement on what valid transactions are through consensus algorithms.
+With the advent and increasing popularity of cryptocurrencies such as Bitcoin and Ethereum, it is of utmost importance to have strong behaviour guarantees of the blockchain software whereupon they rely.
 
-Blockchains may also provide support for Smart Contracts. Smart Contracts are scripts of an ad-hoc programming language that are stored in the blockchain and that run on the network. They can interact with the ledger’s data and update its state. These scripts can express the logic of possibly complex contracts between users of the blockchain. Thus, Smart Contracts can facilitate the economic activity of blockchain participants.
+Blockchains are decentralized transactional ledgers that rely on cryptographic hash functions for guaranteeing the integrity of the stored data. Agreement on what valid transactions are is achieved through consensus algorithms. Blockchains may also provide support for smart contracts that are stored in the blockchain and run on the network by interacting with the ledger’s data and updating its state. 
 
-With the emergence and increasing popularity of cryptocurrencies such as Bitcoin and Ethereum, it is now of utmost importance to have strong guarantees of the behaviour of blockchain so ware. These guarantees can be brought by using Formal Methods. Indeed, Blockchain software encompasses many topics of computer science where using Formal Methods techniques and tools is relevant: consensus algorithms to ensure the liveness and the security of the data on the chain, programming languages specifically designed to write smart contracts, cryptographic protocols, such as zero-knowledge proofs, used to ensure privacy, etc.
-
-xxxxx
-
-Meanwhile, the same principle was explored in a more accessible way that
-does not require such technical knowledge \cite{SO08}. However, such experiments
-did not go beyond the exploratory phase.
+Ensuring correct behavior can be brought by using formal methods (FM) and, indeed, there is a series of workshops devoted to formal methods applied to blockchain software. Particular techniques such as theorem proving and formal semantics have been successfully applied to blockchain but there seems to be no reported experience in using calculational methods, e.g. the algebra of programming. The main aim of this work will be to challenge such methods in the blockchain domain.
 
 \section*{Goals}
 
