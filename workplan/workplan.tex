@@ -40,7 +40,7 @@
 
 \def\msccandidate{Diogo João Silva de Araújo}
 \def\mscsupervisor{José Nuno Oliveira \footnote{HASLab/ U.Minho \& INESC TEC.}}
-\def\msctitle    {Formally Understanding Blockchain by Reverse Engineering}
+\def\msctitle    {Formalizing Blockchain --- the Calculation Way}
 
 \title{\textbf{MSc project proposal}\\ \vspace{0.5cm}\msctitle}
 \author{
@@ -75,13 +75,21 @@
 
 \section*{Motivation}
 
-With the advent and increasing popularity of cryptocurrencies such as Bitcoin and Ethereum, it is of utmost importance to have strong behaviour guarantees of the blockchain software whereupon they rely.
+With the advent and increasing popularity of cryptocurrencies such as Bitcoin and Ethereum, it is of utmost importance to have strong behaviour guarantees of the blockchain software they rely upon.
 
-Blockchains are decentralized transactional ledgers that rely on cryptographic hash functions for guaranteeing the integrity of the stored data. Agreement on what valid transactions are is achieved through consensus algorithms. Blockchains may also provide support for smart contracts that are stored in the blockchain and run on the network by interacting with the ledger’s data and updating its state. 
+Ensuring correct behavior can be brought by using formal methods (FM) and,
+indeed, there is a series of workshops devoted to formal methods applied
+to blockchain software.\footnote{Namely: \href{https://sites.google.com/view/fmbc}{FMBC'19}, \href{https://fmbc.gitlab.io/2020}{FMBC'20}, \href{https://fmbc.gitlab.io/2021}{FMBC'21} and \href{https://fmbc.gitlab.io/2022}{FMBC'22}.} Particular techniques such as theorem proving and
+formal semantics have been successfully applied to blockchain.
 
-Ensuring correct behavior can be brought by using formal methods (FM) and, indeed, there is a series of workshops devoted to formal methods applied to blockchain software. Particular techniques such as theorem proving and formal semantics have been successfully applied to blockchain but there seems to be no reported experience in using calculational methods, e.g. the algebra of programming. The main aim of this work will be to challenge such methods in the blockchain domain.
+However, there seems
+to be no reported experience in using calculational proofs, e.g. the algebra
+of programming. The main aim of this project is to challenge such algebraic methods
+in the blockchain domain and to see how they compare to the other formal approaches.
 
 \section*{Goals}
+
+Blockchains are decentralized transactional ledgers that rely on cryptographic hash functions for guaranteeing the integrity of the stored data. Agreement on what valid transactions are is achieved through consensus algorithms. Blockchains may also provide support for smart contracts that are stored in the blockchain and run on the network by interacting with the ledger’s data and updating its state. 
 
 The first workshop on formal methods for blockchain took place in October 2019, as part of the 3rd World Congress in Formal Methods (FM'19). This inaugurated a series of events which aim at ensuring safety and quality in blockchain technologies by use of formal methods.
 
