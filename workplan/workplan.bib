@@ -1,11 +1,12 @@
 @inproceedings{DBLP:conf/crypto/Merkle87,
-  author    = {Ralph C. Merkle},
+  author    = {R.C. Merkle},
+  longauthor    = {Ralph C. Merkle},
   editor    = {Carl Pomerance},
   title     = {A Digital Signature Based on a Conventional Encryption Function},
-  booktitle = {Advances in Cryptology - {CRYPTO} '87, {A} Conference on the Theory
-               and Applications of Cryptographic Techniques, Santa Barbara, California,
-               USA, August 16-20, 1987, Proceedings},
-  series    = {Lecture Notes in Computer Science},
+  booktitle = {Advances in Cryptology - {CRYPTO} '87, Proceedings},
+  longbooktitle = {Advances in Cryptology - {CRYPTO} '87, {A} Conference on the Theory and Applications of Cryptographic Techniques, Santa Barbara, California, USA, August 16-20, 1987, Proceedings},
+  series    = {LNCS},
+  longseries    = {Lecture Notes in Computer Science},
   volume    = {293},
   pages     = {369--378},
   publisher = {Springer},
@@ -17,14 +18,13 @@
   bibsource = {dblp computer science bibliography, https://dblp.org}
 }
 @inproceedings{DBLP:conf/cav/GabbayJS21,
-  author    = {Murdoch James Gabbay and
-               Arvid Jakobsson and
-               Kristina Sojakova},
-  editor    = {Bruno Bernardo and
-               Diego Marmsoler},
+  author    = {M.J. Gabbay and A. Jakobsson and K. Sojakova},
+  longauthor    = {Murdoch James Gabbay and Arvid Jakobsson and Kristina Sojakova},
+  editor    = {B. Bernardo and D. Marmsoler},
+  longeditor    = {Bruno Bernardo and Diego Marmsoler},
   title     = {Money Grows on (Proof-)Trees: The Formal {FA1.2} Ledger Standard},
-  booktitle = {3rd International Workshop on Formal Methods for Blockchains, FMBC@CAV
-               2021, July 18-19, 2021, Los Angeles, California, {USA} (Virtual Conference)},
+  longbooktitle = {3rd International Workshop on Formal Methods for Blockchains, FMBC@CAV 2021, July 18-19, 2021, Los Angeles, California, {USA} (Virtual Conference)},
+  booktitle = {3rd Int. Workshop on FMBC (FMBC@CAV 2021)},
   series    = {OASIcs},
   volume    = {95},
   pages     = {2:1--2:14},
@@ -47,24 +47,6 @@ pointfree programming}, \emph{Recursion in the pointfree style}, \emph{Why monad
   year       = {2019}
 }
 
-@inproceedings{SO08,
- author = {P.F. Silva and J.N. Oliveira},
- longauthor = {Paulo F. Silva and Jos\'{e} N. Oliveira},
- title = {{'Galculator'}: functional prototype of a {G}alois-connection based proof assistant},
- longbooktitle = {PPDP '08: Proceedings of the 10th international ACM SIGPLAN conference on Principles and practice of declarative programming},
- booktitle = {PPDP '08: 10th int. ACM SIGPLAN conf. on Principles and practice of declarative programming},
- year = {2008},
- noisbn = {978-1-60558-117-0},
- pages = {44--55},
- location = {Valencia, Spain},
- ee  = {http://doi.acm.org/10.1145/1389449.1389456},
- nodoi = {10.1145/1389449.1389456},
- publisher = {ACM},
- noaddress = {New York, NY, USA}
- , pdf  = "/Users/jno/PS/SO08/p44-silva.pdf"
- , note = {\bibliometrics{DBLP, AR=47\%, CORE B}}
-}
-
 @book{BM97,
    KEY = "BM97",
    AUTHOR = "R. Bird and O. de Moor",
@@ -77,36 +59,38 @@ pointfree programming}, \emph{Recursion in the pointfree style}, \emph{Why monad
    YEAR = "1997"
 }
 
-@article{MO12a,
-  dblp="journals/jlp/MuO12",
-  longauthor    = {Shin-Cheng Mu and Jos{\'e} Nuno Oliveira},
-  author    = {S.-C. Mu and J.N. Oliveira},
-  title     = {{Programming from Galois connections}},
-  longjournal   = {Journal of Log. Algebraic Programming},
-  journal   = {JLAP},
-  publisher   = {Elsevier, North-Holland},
-  volume    = {81},
-  number    = {6},
-  year      = {2012},
-  pages     = {680-704},
-  nopdf       = {/Users/jno/PS/MO12a/1-s2.0-S1567832612000525-main.pdf},
-  noee        = {http://dx.doi.org/10.1016/j.jlap.2012.05.003},
-  nodoi = {10.1016/j.jlap.2012.05.003},
-  nobibsource = {DBLP, http://dblp.uni-trier.de},
-  nonote = {\bibliometrics{ISIWS,DBLP}}
+@article{OF13,
+tse = {10.1109/TSE.2012.15},
+longauthor = {Jose N. Oliveira and Miguel A. Ferreira},
+author = {J.N. Oliveira and M.A. Ferreira},
+title = {Alloy Meets the Algebra of Programming: A Case Study},
+longjournal ={IEEE Transactions on Software Engineering},
+journal ={IEEE Trans. Soft. Eng.},
+volume = {39},
+number = {3},
+noissn = {0098-5589},
+year = {2013},
+pages = {305-326},
+ee  = {http://doi.ieeecomputersociety.org/10.1109/TSE.2012.15},
+nodoi = {10.1109/TSE.2012.15},
+publisher = {IEEE Computer Society},
+address = {Los Alamitos, CA, USA},
+note = {\bibliometrics{SJR Q1 (Software), ISIWS}}
+}
+@proceedings{DBLP:conf/fm/2019-w1,
+  editor    = {E. Sekerinski and N. Moreira {\em et al}},
+  longeditor    = {Emil Sekerinski and Nelma Moreira and Jos{\'{e}} N. Oliveira and Daniel Ratiu and Riccardo Guidotti and Marie Farrell and Matt Luckcuck and Diego Marmsoler and Jos{\'{e}} Creissac Campos and Troy Astarte and Laure Gonnord and Antonio Cerone and Luis Couto and Brijesh Dongol and Martin Kutrib and Pedro Monteiro and David Delmas},
+  title     = {Formal Methods. {FM} 2019 International Workshops - Porto, Portugal,
+               October 7-11, 2019, Revised Selected Papers, Part {I}},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {12232},
+  publisher = {Springer},
+  year      = {2020},
+  url       = {https://doi.org/10.1007/978-3-030-54994-7},
+  doi       = {10.1007/978-3-030-54994-7},
+  isbn      = {978-3-030-54993-0},
+  timestamp = {Wed, 17 Aug 2022 12:51:46 +0200},
+  biburl    = {https://dblp.org/rec/conf/fm/2019-w1.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
 }
 
-@misc{Ol20,
-  author={J.N. Oliveira},
-  title={Biproducts of {Galois} connections},
-  note={Contributed talk to the IFIP WG 2.1 Meeting \#79, Otterlo (NL), January 2020},
-  year={2020}
-}
-
-@book{Ba04a
-, author    = "R.C. Backhouse"
-, title     = "Mathematics of Program Construction"
-, year = "2004"
-, publisher = "Univ.\ of Nottingham"
-, note= {Draft of book in preparation, available from the author's website. 608 pages}
-}

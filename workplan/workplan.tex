@@ -76,27 +76,53 @@
 
 \section*{Motivation}
 
-With the advent and increasing popularity of cryptocurrencies such as Bitcoin and Ethereum, it is of utmost importance to have strong behaviour guarantees of the blockchain software they rely upon.
+With the advent and increasing popularity of cryptocurrencies % such as Bitcoin and Ethereum,
+it is of utmost importance to have strong behaviour guarantees of the blockchain
+software they rely upon.
 
 Ensuring correct behavior can be brought by using formal methods (FM) and,
 indeed, there is a series of workshops devoted to formal methods applied
-to blockchain software.\footnote{\label{fn:221012a} Namely: \href{https://sites.google.com/view/fmbc}{FMBC'19}, \href{https://fmbc.gitlab.io/2020}{FMBC'20}, \href{https://fmbc.gitlab.io/2021}{FMBC'21} and \href{https://fmbc.gitlab.io/2022}{FMBC'22}.} Particular techniques such as theorem proving and
-formal semantics have been successfully applied to blockchain.
+to blockchain software.\footnote{\label{fn:221012a} Namely: \href{https://sites.google.com/view/fmbc}{FMBC'19},
+\href{https://fmbc.gitlab.io/2020}{FMBC'20}, \href{https://fmbc.gitlab.io/2021}{FMBC'21}
+and \href{https://fmbc.gitlab.io/2022}{FMBC'22}.} Particular techniques such
+as theorem proving and formal semantics have been successfully applied to
+blockchain, for instance.
 
-However, there seems
-to be no reported experience in using calculational proofs, namely the algebra
-of programming \cite{BM97,Ol05}. The main aim of this project is to challenge such algebraic methods
-in the blockchain domain and to see how they compare to the other formal approaches.
+However, there seems to be no reported experience in using calculational
+proofs, namely the algebra of programming \cite{BM97,Ol05}, in this domain.
+The main aim of this project is to challenge such algebraic methods in the
+blockchain arena and to see how they compare to the other formal approaches.
 
 \section*{Goals}
 
-Blockchains are decentralized transactional ledgers that rely on cryptographic hash functions for guaranteeing the integrity of stored data. Agreement on what valid transactions are is achieved through consensus algorithms. Blockchains also support so-called smart contracts that are stored in the blockchain and run on the network by interacting with the ledger’s data and updating its state. 
+Blockchains are decentralized transactional ledgers that rely on cryptographic
+hash functions for guaranteeing the integrity of stored data. Agreement on
+what valid transactions are is achieved through consensus algorithms. Blockchains
+also support so-called smart contracts that are stored in the blockchain
+and run on the network by interacting with the ledger’s data and updating
+its state. 
 
-The first workshop on formal methods for blockchain took place in October 2019, as part of the 3rd World Congress in Formal Methods (FM'19). This inaugurated a series of events which aim at ensuring safety and quality in blockchain technologies by use of formal methods techniques. (See footnote \ref{fn:221012a}.) These have included theorem proving  over formal semantics definition (e.g.\ \cite{DBLP:conf/cav/GabbayJS21}) but not calculational proofs advocated by the algebra of programming ( e.g.\ \cite{BM97}). On the oher hand, preliminary exercises carried out as lab assignments in the context of \cite{Ol05} % Algebra of Programming course at U. Minho
-have shown that blockchain components such as e.g.\ Merkle trees \cite{DBLP:conf/crypto/Merkle87} can be tackled rather easily and effectively in that way.
+Formal methods for blockchain (FMBC) is a relatively new research subject.
+The first FMBC workshop took place in October 2019, as part of the 3rd World
+Congress in Formal Methods \cite{DBLP:conf/fm/2019-w1}. This inaugurated
+a series of events which aim at ensuring safety and quality in blockchain
+technologies by use of formal method techniques. (See footnote \ref{fn:221012a}.)
+These have included theorem proving over formal semantics definition
+(e.g.\ \cite{DBLP:conf/cav/GabbayJS21})
+but not calculational proofs advocated by the algebra of programming
+(e.g.\ \cite{BM97}) and supported by model-checking (e.g.\ as in \cite{OF13},
+a piece of work similar to what is intended in this project). On the oher
+hand, preliminary exercises carried out as lab assignments in the context
+of \cite{Ol05}
+% Algebra of Programming course at U. Minho
+have shown that blockchain components such as e.g.\ Merkle trees \cite{DBLP:conf/crypto/Merkle87}
+can be tackled rather easily and effectively in that way.
 
 The main aim of this dissertation is to start from such exercises and,
-by inspecting hackage libraries such as \href{https://hackage.haskell.org/package/haskoin-core}{haskoin} and \href{https://hackage.haskell.org/package/blockchain}{blockchain}, trying to identify generic patterns that arise in such libraries that can be identified and delivered as \emph{certified components} for blockchain software.
+by inspecting hackage libraries such as \href{https://hackage.haskell.org/package/haskoin-core}{haskoin}
+and \href{https://hackage.haskell.org/package/blockchain}{blockchain}, trying
+to identify generic patterns that arise in such libraries that can be identified
+and delivered as \emph{certified components} for blockchain software.
 
 This work can be framed in the broad discipline of formal methods applied to
 software design, stepping up the paradigm of deriving correct-by-construction
@@ -170,13 +196,13 @@ This project is expected to deliver, besides the PDR report and the dissertation
 %end{document}
 
 \begin{flushleft}
-\vspace{1cm}
+\vspace{1em}
 Date: \today \\
-\vspace{4cm}
+\vspace{2cm}
 Student: \Vtextvisiblespace[9cm] \\
 %\vspace{4cm}
 %Co-Supervisor: \Vtextvisiblespace[8.4cm] \\
-\vspace{4cm}
+\vspace{2cm}
 Supervisor: \Vtextvisiblespace[9.52cm]
 \end{flushleft}
 
