@@ -92,10 +92,11 @@ in the blockchain domain and to see how they compare to the other formal approac
 
 Blockchains are decentralized transactional ledgers that rely on cryptographic hash functions for guaranteeing the integrity of stored data. Agreement on what valid transactions are is achieved through consensus algorithms. Blockchains also support so-called smart contracts that are stored in the blockchain and run on the network by interacting with the ledger’s data and updating its state. 
 
-The first workshop on formal methods for blockchain took place in October 2019, as part of the 3rd World Congress in Formal Methods (FM'19). This inaugurated a series of events which aim at ensuring safety and quality in blockchain technologies by use of formal methods techniques. (See footnote \ref{fn:221012a}.) These have included theorem proving \cite{DBLP:conf/cav/GabbayJS21} and formal semantics definition but not calculational proofs advocated by the algebra of programming. On the oher hand, very simple exercises carried out in lab assignments in the Algebra of Programming course at U. Minho have shown that blockchain components such as e.g.\ Merkle trees can be tackled rather easily and effectively in that way.
+The first workshop on formal methods for blockchain took place in October 2019, as part of the 3rd World Congress in Formal Methods (FM'19). This inaugurated a series of events which aim at ensuring safety and quality in blockchain technologies by use of formal methods techniques. (See footnote \ref{fn:221012a}.) These have included theorem proving  over formal semantics definition (e.g.\ \cite{DBLP:conf/cav/GabbayJS21}) but not calculational proofs advocated by the algebra of programming ( e.g.\ \cite{BM97}). On the oher hand, preliminary exercises carried out as lab assignments in the context of \cite{Ol05} % Algebra of Programming course at U. Minho
+have shown that blockchain components such as e.g.\ Merkle trees can be tackled rather easily and effectively in that way.
 
 The main aim of this dissertation is to start from such exercises and,
-by inspecting hackage libraries such as \href{https://hackage.haskell.org/package/haskoin-core}{haskoin} and \href{https://hackage.haskell.org/package/blockchain}{blockchain}, trying to identify generic patterns that arise in such libraries and can be identified as \emph{certified components} of blockchain software.
+by inspecting hackage libraries such as \href{https://hackage.haskell.org/package/haskoin-core}{haskoin} and \href{https://hackage.haskell.org/package/blockchain}{blockchain}, trying to identify generic patterns that arise in such libraries that can be identified and delivered as \emph{certified components} for blockchain software.
 
 This work can be framed in the broad discipline of formal methods applied to
 software design, stepping up the paradigm of deriving correct-by-construction
@@ -122,7 +123,7 @@ the problem to be addressed in the future master’s dissertation.
 \item[Contribution] -- Main body of research evolving towards the main aim
 of the project: analysis and reverse specification of blockchain software,
 trying to identify generic patterns that arise in such libraries and can be
-identified as delivered as \emph{certified components} of blockchain software.
+identified and delivered as \emph{certified components} for blockchain software construction.
 
 \item[Writing up] - Incorporating all final results and suggestions for future
 work in the master's dissertation.
@@ -134,7 +135,7 @@ work in the master's dissertation.
 
 This project is expected to deliver, besides the PDR report and the dissertation itself:
 \begin{itemize}
-\item   a presentation of the work in the InfoBlender talk series of HASLab;
+\item   a presentation of the work in the InfoBlender talk-series of HASLab;
 \item   a conference paper.
 \end{itemize}
 
