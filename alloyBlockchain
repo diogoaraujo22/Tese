@@ -1,0 +1,42 @@
+sig Block{
+	Next : lone Block, --funcao
+  	doc : one Document, -- funcao
+	Phash : one Byte -- funcao
+}
+
+
+sig Document{
+ 	hash : one Byte -- funcao
+  	
+}
+
+
+sig Byte{}
+
+
+fact{
+	~hash in Byte -> one Document -- obrigar hash a ser bijecao 
+	~doc in Document -> one Block -- obrigar doc a ser bijecao
+	Next.~Next in iden            -- obrigar Next a ser injetiva
+  
+  
+  	no Next&iden 	-- Next é irreflexiva 
+  	--all b:Block | b->b not in Next -- obrigar a que um bloco nao seja next dele mesmo
+  
+  	no Next&~Next 	-- Next é assimetrica?? antissimetrica
+  	--all b1,b2:Block | b1->b2 in Next implies b2->b1 not in Next
+  
+  	--no ^Next&iden --Nao ha ciclos
+  
+  	all b1,b2: Block | b1 ->b2 in *Next or b2 ->b1 in *~Next
+  
+  	--no Next.Next in Next
+  
+  	Phash = ~Next.doc.hash
+  
+}
+
+
+-- se num blockchain um documento mudar, o quandrado magico onde ele esta, tem que deixar de ser valido
+
+run{}
