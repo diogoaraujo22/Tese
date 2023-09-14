@@ -1,0 +1,62 @@
+sig Document{
+  	number : one Number,
+  	nonce : one Nonce,
+ 	tx : one Tx, 
+ 	Prev : lone Word	
+}
+
+sig Block{
+  	doc : one Document,
+  	hash : one Word  	
+}
+
+
+sig Nonce{}
+sig Number{
+	succ : one Number
+}
+
+sig Tx{}
+
+
+sig Word{}
+
+fact{ -- relacao hash´ = ~doc.hash : Document->Word tem que ser simples e injetiva (hash.)
+  
+  	lone ~succ -- succ injetiva
+  	no (succ&iden) 
+  	
+   	lone ~doc.hash --ser simples
+  	lone ~hash.doc --ser injetiva
+	
+  	iden & (Document->Document) in ~doc.doc--doc seja sobrejetiva
+  	
+  
+  	lone ~(doc.number) --ser injetiva
+  
+  
+	--ash in Byte -> one Tx -- obrigar hash a ser bijecao 
+	--oc in Tx -> one Block -- obrigar doc a ser bijecao
+	--xt.~Next in iden            -- obrigar Next a ser injetiva
+  
+  
+  	-- Next&iden 	-- Next é irreflexiva 
+  	--all b:Block | b->b not in Next -- obrigar a que um bloco nao seja next dele mesmo
+  
+  	-- Next&~Next 	-- Next é assimetrica?? antissimetrica
+  	--all b1,b2:Block | b1->b2 in Next implies b2->b1 not in Next
+  
+  	--no ^Next&iden --Nao ha ciclos
+  
+  	--l b1,b2: Block | b1 ->b2 in *Next or b2 ->b1 in *~Next
+  
+  	--no Next.Next in Next
+  
+  	--ash = ~Next.doc.hash
+  
+}
+
+
+-- se num blockchain um documento mudar, o quandrado magico onde ele esta, tem que deixar de ser valido
+
+run{some doc} for 4 but 2 Block
