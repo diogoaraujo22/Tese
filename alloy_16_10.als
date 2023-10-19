@@ -123,8 +123,8 @@ pred propNoConfusionHashes{
 
 
 pred propM{
-
-	--hash = tx.hashTx -- o hash de um bloco tem que coincidir com o hash das transações por forma a nao haver violação dos dados
+-- 1st approximation
+  hash = tx.merkleRoot -- o hash de um bloco tem que coincidir com o hash das transações por forma a nao haver violação dos dados
 
 }
 
@@ -189,17 +189,15 @@ fact{
   
   	propNoConfusionHashes
   
-  	-- hash é injetivo
-  
-  	-- propM
-  
-  	propDifferentMerkleAndHash
+ -- 	propDifferentMerkleAndHash
   
   	propDifferentMerkleroot
   
   	propNoOrphanTransactions
   
   	propNonEmptyTransactions
+
+    propM
   
 }
 
@@ -209,6 +207,20 @@ fact{
 -------------
 
 -- 		- add a new Block
+
+pred addBlock [b : Block, t : Tx]{
+
+    //guards
+    no (b.prev or b.Next)
+
+    //effects
+    b' = Block-Block.~Next -- last block
+    b.tx = t
+    Next = 
+
+    //frame conditions
+
+}
 
 -- 		- error correction : wrong block added!
 
