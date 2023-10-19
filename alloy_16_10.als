@@ -38,7 +38,7 @@ sig Id{}
 
 pred propNoConfusionNext {
 
-	all b : Block | b->b not in Next -- o next de um bloco nao pode ser ele mesmo
+  no Next & iden --	all b : Block | b->b not in Next -- o next de um bloco nao pode ser ele mesmo
 
 }
 
@@ -74,8 +74,9 @@ pred propNoOrphanTx{
 
 pred propNonSameHashBlock{
 
-	all b1, b2 : Block | b1!=b2 implies b1.hash != b2.hash -- 2 blocos distintos nao tem a mesma hash
-
+--	all b1, b2 : Block | b1!=b2 implies b1.hash != b2.hash -- 2 blocos distintos nao tem a mesma hash
+--- hash is injective
+   hash.~hash in iden
 }
 
 
@@ -88,8 +89,8 @@ pred propLinkedChain{
 
 pred propNoCycleChain{
 
-	all b : Block | b not in b.^Next -- nao ha ciclos
-
+--	all b : Block | b not in b.^Next -- nao ha ciclos
+  no ^Next & iden
 }
 
 
@@ -102,15 +103,15 @@ pred propInitialBlockI{
 
 pred propReachableFromBlockI{
 
-	all bi : BlockI, b : Block - bi | b in bi.^Next -- obrigar a que todos os blocos sejam alcanlçaveis a partir do BlockI
+	all bi : BlockI, b : Block - bi | b in bi.^Next -- obrigar a que todos os blocos sejam alcançaveis a partir do BlockI
 
 }
 
 
 pred propNoPrevBlockI{
 
-	all bi : BlockI | no bi.prev -- o blocoI nao tem prev
-
+--	all bi : BlockI | no bi.prev -- o blocoI nao tem prev
+  no BlockI.prev
 }
 
 
@@ -137,8 +138,9 @@ pred propDifferentMerkleAndHash{
 
 pred propDifferentMerkleroot{
 	
-    all tx1, tx2 : Tx | tx1!=tx2 implies tx1.merkleRoot != tx2.merkleRoot -- 2 Tx distintos nao tem a mesma hash
-
+--    all tx1, tx2 : Tx | tx1!=tx2 implies tx1.merkleRoot != tx2.merkleRoot -- 2 Tx distintos nao tem a mesma hash
+-- merkeRoot is injective
+   merkleRoot.~merkleRoot in iden
 }
 
 
@@ -217,7 +219,7 @@ fact{
 ------
 
 run{
-	--some Next & prev.~hash  
+	--some Next & prev.~hash 
     some Next
 
 } for 5 but exactly 4 Block
