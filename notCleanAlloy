@@ -1,0 +1,315 @@
+--open util/sequence[T]
+
+-----------------------
+-- Blockchain Structure
+-----------------------
+
+sig Transaction{
+  	--tid : one Id 
+	--hashT : one Word
+}
+
+sig Block{
+    --nonce : one Nonce,
+    var tx 	  : lone Tx, 
+    var previous : lone Word,
+    var hash  : lone Word,
+    var Next   : lone Block	
+}
+
+one sig BlockI extends Block{} 
+
+--sig Nonce{}
+
+sig Tx{
+	merkleRoot : one Word,
+  	transaction : set Transaction
+}
+
+sig Word{}
+
+
+--------------------
+-- Functions
+--------------------
+
+
+-- função que retorna os blocos já consolidados
+fun effectiveBlocks : Block 
+	{Next.Block + Block.Next} 
+
+-- função que retorna os blocos não consolidados
+fun nonEffectiveBlocks : Block
+	{Block - effectiveBlocks} 
+
+-- função que retorna o último bloco da cadeia
+fun lastBlock : Block
+	{Block-(Block.~Next)-nonEffectiveBlocks} 
+
+
+--------------------
+-- Predicates
+--------------------
+
+pred propNoConfusionNext {
+
+  	always no Next & iden --	all b : Block | b->b not in Next -- o next de um bloco nao pode ser ele mesmo
+
+}
+
+
+pred propNoBlocksSameNext{
+	--obrigar a que 2 blocos distintos não tenham o mesmo Next
+	always all b:effectiveBlocks | lone Next.b
+
+
+}
+
+pred propNotSameHashPrev {
+
+	always all b : effectiveBlocks-BlockI | b.hash != b.previous -- a hash e o previous de um bloco nao coincidem. Esta propriedade não é necessária
+
+}
+
+
+
+pred propNonSameHashBlock{
+
+	--all b1, b2 : Block | b1!=b2 implies b1.hash != b2.hash -- 2 blocos distintos nao tem a mesma hash
+	--hash is injective
+	always hash.~hash in iden
+} -- aqui
+
+
+
+pred propLinkedChain{
+
+  	always Next in hash.~previous -- se b2 é o next de b1 entao o previous de b2 coincide com a hash de b1
+
+}
+
+
+pred propNoCycleChain{
+
+	--all b : Block | b not in b.^Next -- nao ha ciclos
+	always no ^Next & iden
+
+}
+
+
+pred propInitialBlockI{
+
+	-- all bi : BlockI | no b : Block | b.Next = bi -- obrigar BlockI a ser o bloco inicial
+	always no Next.BlockI
+
+}
+
+
+pred propReachableFromBlockI{
+
+	--all bi : BlockI, b : Block - bi | b in bi.^Next -- obrigar a que todos os blocos ja consolidados sejam alcançaveis a partir do BlockI
+	--always all bi : BlockI, b : Block - bi | b in effectiveBlocks implies b in bi.^Next
+	always all b : effectiveBlocks-BlockI | b in BlockI.^Next
+
+
+}--
+
+pred propNonEffectiveBlocks{
+	
+	--os blocos não consolidados não tem previous, hash ou tx
+	always no nonEffectiveBlocks.previous
+	always no nonEffectiveBlocks.hash
+	always no nonEffectiveBlocks.tx
+}
+
+
+
+
+pred propNoPrevBlockI{
+
+	--all bi : BlockI | no bi.previous -- o blocoI nao tem previous
+	always no BlockI.previous
+
+}
+
+
+pred propNoConfusionHashes{
+
+	always no Next & previous.~hash -- impedir isto: se b1 é o next de b0, por vezes b0.previous = b1.hash e nao é suposto
+
+}
+
+/*
+assert propM{
+
+	-- 1st approximation
+	always hash = tx.merkleRoot -- o hash de um bloco tem que coincidir com o hash das transações por forma a nao haver violação dos dados
+
+}*/
+
+
+pred propDifferentMerkleroot{
+	
+	--all tx1, tx2 : Tx | tx1!=tx2 implies tx1.merkleRoot != tx2.merkleRoot -- 2 Tx distintos nao tem a mesma hash
+	--merkeRoot is injective
+   	always merkleRoot.~merkleRoot in iden
+
+}
+
+
+pred propNonEmptyTransactions{
+  
+	always all tx : Tx | some tx.transaction -- um bloco tem que ter pelo menos 1 transacao
+
+}
+
+
+pred propEffectiveBlocks{
+	
+	--os blocos consolidados tem, obrigatoriamente previous, hash ou tx
+	always all b: effectiveBlocks-BlockI | one b.previous
+	always all b: effectiveBlocks | one b.hash
+	--always all b: effectiveBlocks | one b.tx
+}
+
+
+
+
+
+-------------
+-- Facts
+-------------
+
+fact Facts{
+	propNoConfusionNext
+
+	propNonSameHashBlock 
+
+	propNoBlocksSameNext
+
+	propNoCycleChain
+
+	propLinkedChain
+
+	propInitialBlockI
+
+ 	propReachableFromBlockI
+	
+	propNonEffectiveBlocks
+
+	propNoPrevBlockI
+
+	propNoConfusionHashes
+
+	--propM -- aqui dá erro
+
+	propDifferentMerkleroot
+
+	propNonEmptyTransactions
+
+	propEffectiveBlocks
+} 
+
+
+/*
+pred myFacts{
+	propNoConfusionNext
+  
+ 	propNotSameHashPrev -- esta em comentário
+  
+	--propNoOrphanHashes
+
+	--propNoOrphanNonces
+ 
+  	--propNoOrphanTx
+
+	propNonSameHashBlock 
+
+ 	propLinkedChain
+  
+  	propNoCycleChain  
+  
+ 	propInitialBlockI
+    
+  	propReachableFromBlockI 
+  	
+        propNoPrevBlockI
+  
+  	propNoConfusionHashes
+  
+	--propDifferentMerkleAndHash
+  
+  	propDifferentMerkleroot
+  
+  	--propNoOrphanTransactions
+  
+  	propNonEmptyTransactions
+
+    	propM
+
+	propNonEffectiveBlocks
+
+	propEffectiveBlocks
+
+} */
+
+fact Init {
+	some nonEffectiveBlocks
+	#Next > 2
+}
+
+
+fact Traces {
+	always (nop or some b:Block, t:Tx | addBlock[b,t])
+}
+
+--------------------
+-- Operations
+--------------------
+
+-- Add a new Block to the chain
+pred addBlock [b:Block, t:Tx]{
+
+	//guards
+        	b in nonEffectiveBlocks
+	t not in Block.tx
+
+	//effects
+	previous' = previous + b->lastBlock.hash	--b.previous' = lastBlock.hash
+	hash' = hash + b->t.merkleRoot 	--b.hash' = t.merkleRoot
+	tx' = tx + b->t	--b.tx' = t
+	Next' = Next + lastBlock->b
+/*
+	let lb = Block-Block.~Next | b.previous = lb.hash-- last block  
+	b.tx = t
+	b.hash = t.merkleRoot
+	let lb = Block-Block.~Next | Next' = Next + lb->b
+*/
+    	//frame conditions
+
+}
+
+-- 		- error correction : wrong block added!
+
+-- Nothing happens
+pred nop {
+	tx' = tx
+	previous' = previous
+	hash' = hash
+	Next' = Next
+}
+
+
+-----------
+-- Run
+-----------
+
+run{
+	--some Next & prev.~hash 
+    	--some Next
+	--#Next = 3
+	---------------------
+	all b : Block | eventually b in effectiveBlocks
+
+
+} for 5 but exactly 6 Block, exactly 6 Word
